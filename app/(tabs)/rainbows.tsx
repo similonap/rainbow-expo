@@ -1,5 +1,6 @@
-import { View, Text, ScrollView, FlatList } from "react-native";
+import { View, Text, ScrollView, FlatList, Pressable } from "react-native";
 import { rainbow } from "rainbow-colors-array-ts";
+import { Link } from "expo-router";
 
 interface RainbowLineProps {
     color: string
@@ -7,7 +8,14 @@ interface RainbowLineProps {
 
 function RainbowLine({color} : RainbowLineProps) {
     return (
-        <View style={{backgroundColor: color, height: 100}}></View>
+        <Link href={{
+            pathname: "[color]",
+            params: { color: color }
+        }} asChild>
+            <Pressable>
+                <View style={{backgroundColor: color, height: 100}}></View>
+            </Pressable>
+        </Link>
     )
 }
 
